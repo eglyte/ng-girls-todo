@@ -2,9 +2,16 @@
     <input type="checkbox"
            class="todo-checkbox"
            (click)="completeItem()"/>
-    <span class="todo-title" [ngClass]="{'todo-complete': item.completed}">
+    <span class="todo-title"
+          [ngClass]="{'todo-complete': item.completed}"
+          (click)="edit = !edit"
+          *ngIf="!edit">
       {{ item.title }}
     </span>
+    <app-input-button-unit
+            *ngIf="edit"
+            [title]="item.title"
+            (submit)="updateItem($event)"></app-input-button-unit>
     <button class="btn btn-red"
             (click)="removeItem()">
         remove

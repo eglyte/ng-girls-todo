@@ -11,6 +11,7 @@ export class TodoItemComponent implements OnInit {
     @Input() item: TodoItem;
     @Output() remove: EventEmitter<TodoItem> = new EventEmitter();
     @Output() update: EventEmitter<any> = new EventEmitter();
+    edit = false;
 
     constructor() {
     }
@@ -20,6 +21,13 @@ export class TodoItemComponent implements OnInit {
 
     removeItem() {
         this.remove.emit(this.item);
+    }
+
+    updateItem(title: string) {
+        this.item.title = title;
+        this.update.emit({
+            item: this.item
+        });
     }
 
     completeItem() {

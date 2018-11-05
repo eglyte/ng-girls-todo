@@ -26,6 +26,7 @@ export class ListManagerComponent implements OnInit {
     }
 
     updateItem(item, changes) {
+        console.log(item);
         this.todoListService.updateItem(item, changes);
     }
 }
